@@ -58,7 +58,7 @@
     .'&submit=Sign';
 	//////////////////////////////// Đăng Ký
 	
-	
+	echo $post_data.'<br>';
 	$reg = curl_init();
 	curl_setopt($reg, CURLOPT_URL, "https://mbasic.facebook.com/reg/?cid=103");
 	curl_setopt($reg, CURLOPT_RETURNTRANSFER, 1);
