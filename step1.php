@@ -1,5 +1,4 @@
 <?php
-    require_once('curl.class.php');
     // GET COOKIE
     $cookie_file = 'cookie.txt';
     file_put_contents($cookie_file, ".facebook.com	TRUE	/	TRUE	1587882931	locale	en_GB\n.facebook.com	TRUE	/	TRUE	1587882931	lh	en_GB");
@@ -29,6 +28,7 @@
     $reg_instance = $reg_instance[1];
     preg_match('#><input type="hidden" name="reg_impression_id" value="(.+?)" />#', $before_reg_result, $reg_impression_id);
     $reg_impression_id = $reg_impression_id[1];
+    /////////////////////////////////////////
     
     $ho = explode("\n" , trim(file_get_contents('./info/firstname.txt')));
 	$ten = explode("\n" , trim(file_get_contents('./info/lastname.txt')));
@@ -49,7 +49,7 @@
     .'&ns=0&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__'
     .'&lastname='.urldecode($lastname)
     .'&firstname='.urldecode($firstname)
-    .'&reg_email__='.urlencode('avfzsd04mb@proto2mail.com')
+    .'&reg_email__='.urlencode($_GET['email'])
     .'&sex='.$random_gender
     .'&birthday_day='.$random_birthday_day
     .'&birthday_month='.$random_birthday_month
