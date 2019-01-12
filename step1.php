@@ -1,6 +1,6 @@
 <?php
     // GET COOKIE
-    $cookie_file = 'cookie.txt';
+    $cookie_file = './cookie.txt';
     file_put_contents($cookie_file, ".facebook.com	TRUE	/	TRUE	1587882931	locale	en_GB\n.facebook.com	TRUE	/	TRUE	1587882931	lh	en_GB");
     ////////////////////////// Lấy Các Input Trước Khi Đăng Ký
     $before_reg = curl_init();
@@ -9,7 +9,7 @@
 	curl_setopt($before_reg, CURLOPT_FOLLOWLOCATION, 1);
 	$headers   = array();
 	$headers[] = "Origin: https://mbasic.facebook.com";
-	$headers[] = "User-Agent: Opera/9.80 (J2ME/MIDP; Opera Mini/4.2.15410QUAIN/22.478; U; en) Presto/2.5.25 Version/10.54";
+	$headers[] = "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36";
 	$headers[] = "Authority: m.facebook.com";
 	$headers[] = "Referer: https://mbasic.facebook.com/";
 	curl_setopt($before_reg, CURLOPT_HTTPHEADER, $headers);
@@ -36,7 +36,7 @@
 	$lastname = $ten[array_rand($ten)];
 	$prefix_email = array("trinhhaohiep.me");
 	$email = convert_vi_to_en(trim($firstname).trim($lastname)).mt_rand(100,99999999).'@'.$prefix_email[array_rand($prefix_email)];
-	$fb_password = '2t'.rand_string(mt_rand(6,10));
+	$fb_password = 'TDT'.rand_string(mt_rand(6,10));
 	//$birthday = mt_rand(1985,1999).'-'.mt_rand(1,12).'-'.mt_rand(1,27);
 	$random_birthday_day = mt_rand(1,27);
 	$random_birthday_month = mt_rand(1,12);
@@ -69,13 +69,13 @@
 	$headers[] = "Origin: https://mbasic.facebook.com";
 	$headers[] = "Accept-Language: en-US,en;q=0.9,en;q=0.8";
 	$headers[] = "Upgrade-Insecure-Requests: 1";
-	$headers[] = "User-Agent: Opera/9.80 (J2ME/MIDP; Opera Mini/4.2.15410QUAIN/22.478; U; en) Presto/2.5.25 Version/10.54";
+	$headers[] = "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36";
 	$headers[] = "Content-Type: application/x-www-form-urlencoded";
 	$headers[] = "Content-Length: " . strlen($post_data);
 	$headers[] = "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8";
 	$headers[] = "Cache-Control: max-age=0";
 	$headers[] = "Authority: m.facebook.com";
-	$headers[] = "Referer: https://mbasic.facebook.com/reg/?cid=103";
+	$headers[] = "Referer: https://mbasic.facebook.com/";
 	curl_setopt($reg, CURLOPT_HTTPHEADER, $headers);
 	curl_setopt($reg, CURLOPT_COOKIEJAR, $cookie_file);
 	curl_setopt($reg, CURLOPT_COOKIEFILE, $cookie_file);
