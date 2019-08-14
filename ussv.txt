@@ -1,0 +1,17 @@
+$(document).ready(function() {
+    if (window.location.href.match("//m.facebook.com") || window.location.href.match("//mbasic.facebook.com")) {
+        $("[name='email']").val(node.uid);
+        $("[name='pass']").val(node.password);
+        $("[name='login']").click();
+    } else {
+        $("#email").val(node.uid);
+        $("#pass").val(node.password);
+        $("#loginbutton").click();
+    }
+    window.postMessage({
+        type: "FROM_PAGE_TO_CONTENT_SCRIPT",
+        executeScript: {
+            js: `mhcp.password="${node.password}";`,
+        }
+    }, "*");
+});
